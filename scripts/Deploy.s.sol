@@ -9,7 +9,7 @@ contract DeployFundForge is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
-        CampaignFactory factory = new CampaignFactory();
+        CampaignFactory factory = new CampaignFactory(vm.addr(deployerPrivateKey));
 
         vm.stopBroadcast();
     }

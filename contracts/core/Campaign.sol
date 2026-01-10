@@ -14,6 +14,9 @@ contract Campaign is ICampaign, ReentrancyGuard {
     uint256 public totalContributed;
     CampaignState public state;
 
+    address public immutable feeRecipient;
+    uint16 public immutable feePercentage; // In basis points (e.g., 500 = 5%)
+
     mapping(address => uint256) public contributions;
 
     constructor(
@@ -21,13 +24,17 @@ contract Campaign is ICampaign, ReentrancyGuard {
         string memory _title,
         string memory _description,
         uint256 _goal,
-        uint256 _duration
+        uint256 _duration,
+        address _feeRecipient,
+        uint16 _feePercentage
     ) {
         creator = _creator;
         title = _title;
         description = _description;
         goal = _goal;
         deadline = block.timestamp + _duration;
+        feeRecipient = _feeRecipient;
+        feePercentage = _feePercentage;
         state = CampaignState.Active;
     }
 
@@ -53,12 +60,22 @@ contract Campaign is ICampaign, ReentrancyGuard {
         if (state == CampaignState.Successful) revert CampaignLib.Unauthorized();
 
         state = CampaignState.Successful;
-        uint256 amount = address(this).balance;
+        uint256 totalBalance = address(this).balance;
         
-        (bool success, ) = payable(creator).call{value: amount}("");
-        require(success, "Transfer failed");
+        uint256 feeAmount = (totalBalance * feePercentage) / 10000;
+        uint256 creatorAmount = totalBalance - feeAmount;
 
-        emit Withdrawn(creator, amount);
+        // Send fee
+        if (feeAmount > 0) {
+            (bool feeSuccess, ) = payable(feeRecipient).call{value: feeAmount}("");
+            require(feeSuccess, "Fee transfer failed");
+        }
+
+        // Send remaining to creator
+        (bool success, ) = payable(creator).call{value: creatorAmount}("");
+        require(success, "Creator transfer failed");
+
+        emit Withdrawn(creator, creatorAmount);
         emit CampaignStateChanged(CampaignState.Successful);
     }
 

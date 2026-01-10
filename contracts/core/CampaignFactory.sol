@@ -4,9 +4,18 @@ pragma solidity ^0.8.20;
 import {Campaign} from "./Campaign.sol";
 import {ICampaign} from "./ICampaign.sol";
 
-contract CampaignFactory {
+import {Ownable} from "@openzeppelin/access/Ownable.sol";
+
+contract CampaignFactory is Ownable {
     address[] public allCampaigns;
     mapping(address => address[]) public creatorCampaigns;
+    
+    address public feeRecipient;
+    uint16 public feePercentage = 500; // Default 5%
+
+    constructor(address _feeRecipient) Ownable(msg.sender) {
+        feeRecipient = _feeRecipient;
+    }
 
     event CampaignCreated(
         address indexed campaignAddress,
@@ -27,7 +36,9 @@ contract CampaignFactory {
             _title,
             _description,
             _goal,
-            _duration
+            _duration,
+            feeRecipient,
+            feePercentage
         );
 
         address campaignAddress = address(newCampaign);
@@ -43,6 +54,16 @@ contract CampaignFactory {
         );
 
         return campaignAddress;
+    }
+
+    function setFeeRecipient(address _newRecipient) external onlyOwner {
+        require(_newRecipient != address(0), "Invalid address");
+        feeRecipient = _newRecipient;
+    }
+
+    function setFeePercentage(uint16 _newPercentage) external onlyOwner {
+        require(_newPercentage <= 1000, "Fee too high"); // Max 10%
+        feePercentage = _newPercentage;
     }
 
     function getAllCampaigns() external view returns (address[] memory) {

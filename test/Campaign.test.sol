@@ -9,6 +9,7 @@ import {ICampaign} from "../contracts/core/ICampaign.sol";
 contract CampaignTest is Test {
     CampaignFactory public factory;
     Campaign public campaign;
+    address public feeRecipient = address(100);
     address public creator = address(1);
     address public contributor1 = address(2);
     address public contributor2 = address(3);
@@ -17,7 +18,7 @@ contract CampaignTest is Test {
     uint256 public constant DURATION = 1 days;
 
     function setUp() public {
-        factory = new CampaignFactory();
+        factory = new CampaignFactory(feeRecipient);
         vm.prank(creator);
         address campaignAddr = factory.createCampaign(
             "Test Campaign",
@@ -33,6 +34,8 @@ contract CampaignTest is Test {
         assertEq(campaign.goal(), GOAL);
         assertEq(campaign.title(), "Test Campaign");
         assertEq(uint(campaign.state()), uint(ICampaign.CampaignState.Active));
+        assertEq(campaign.feeRecipient(), feeRecipient);
+        assertEq(campaign.feePercentage(), 500);
     }
 
     function test_Contribute() public {
@@ -52,10 +55,16 @@ contract CampaignTest is Test {
         vm.warp(block.timestamp + DURATION + 1);
 
         uint256 initialCreatorBalance = creator.balance;
+        uint256 initialFeeBalance = feeRecipient.balance;
+        
+        uint256 expectedFee = (10 ether * 500) / 10000; // 5%
+        uint256 expectedCreatorAmount = 10 ether - expectedFee;
+
         vm.prank(creator);
         campaign.withdraw();
 
-        assertEq(creator.balance, initialCreatorBalance + 10 ether);
+        assertEq(creator.balance, initialCreatorBalance + expectedCreatorAmount);
+        assertEq(feeRecipient.balance, initialFeeBalance + expectedFee);
         assertEq(uint(campaign.state()), uint(ICampaign.CampaignState.Successful));
     }
 

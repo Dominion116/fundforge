@@ -10,6 +10,8 @@ contract DeployFundForge is Script {
         vm.startBroadcast(deployerPrivateKey);
 
         CampaignFactory factory = new CampaignFactory(vm.addr(deployerPrivateKey));
+        
+        console2.log("CampaignFactory deployed at:", address(factory));
 
         vm.stopBroadcast();
     }

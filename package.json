@@ -1,0 +1,20 @@
+{
+  "name": "fundforge",
+  "version": "1.0.0",
+  "description": "A decentralful crowdfunding platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "forge test",
+    "build": "forge build",
+    "deploy:local": "forge script scripts/Deploy.s.sol --rpc-url http://localhost:8545 --broadcast",
+    "format": "forge fmt"
+  },
+  "keywords": [
+    "solidity",
+    "foundry",
+    "crowdfunding",
+    "ethereum"
+  ],
+  "author": "",
+  "license": "MIT"
+}

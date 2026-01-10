@@ -1,0 +1,34 @@
+# Foundry
+out/
+cache/
+broadcast/
+/lib/
+!/lib/forge-std
+!/lib/openzeppelin-contracts
+
+# Node.js
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDEs and OS
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Documentation (tracked)
+# docs/ is NOT ignored anymore to allow project documentation
+
+# Testing
+test-results/

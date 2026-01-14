@@ -32,3 +32,6 @@ dist-ssr/
 
 # Testing
 test-results/
+
+# Documentation
+*.md

@@ -195,9 +195,8 @@ contract MilestoneCampaignTest is Test {
         // Fast forward past voting deadline
         vm.warp(block.timestamp + VOTING_DURATION + 1);
 
-        // Next vote should finalize (even though quorum not reached, deadline passed)
-        vm.prank(contributor3);
-        campaign.voteOnMilestone(0, true);
+        // Finalize voting (anyone can call this after deadline)
+        campaign.finalizeMilestoneVoting(0);
 
         IMilestoneCampaign.MilestoneInfo memory milestone = campaign.getMilestoneInfo(0);
         // Should be approved since 100% of votes are yes (even if low turnout)
@@ -241,23 +240,13 @@ contract MilestoneCampaignTest is Test {
         _approveFirstMilestone();
 
         // Withdraw all funds somehow (this is a contrived scenario)
-        // In reality, this shouldn't happen, but testing the guard
+        // We can simulate this by dealing a lower balance to the contract
+        vm.deal(address(campaign), 1 ether);
+
+        // This should fail because we don't have 3 ether to pay out for milestone 0
         vm.prank(creator);
+        vm.expectRevert(MilestoneCampaign.InsufficientFunds.selector);
         campaign.completeMilestone(0);
-
-        // Try to complete second milestone without enough funds
-        vm.prank(creator);
-        campaign.startMilestoneVoting(1, VOTING_DURATION);
-        
-        vm.prank(contributor1);
-        campaign.voteOnMilestone(1, true);
-        vm.prank(contributor2);
-        campaign.voteOnMilestone(1, true);
-
-        // This should fail because we don't have 4 ether left
-        vm.prank(creator);
-        vm.expectRevert();
-        campaign.completeMilestone(1);
     }
 
     function test_MultipleMilestonesWorkflow() public {

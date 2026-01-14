@@ -148,6 +148,20 @@ contract MilestoneCampaign is IMilestoneCampaign, ReentrancyGuard {
     }
 
     /**
+     * @notice Finalize voting on a milestone after the deadline has passed
+     * @param milestoneId The ID of the milestone to finalize
+     */
+    function finalizeMilestoneVoting(uint256 milestoneId) external override {
+        if (milestoneId >= milestones.length) revert MilestoneNotFound();
+        
+        Milestone storage milestone = milestones[milestoneId];
+        if (milestone.state != MilestoneState.VotingActive) revert InvalidMilestoneState();
+        if (block.timestamp <= milestone.votingDeadline) revert CampaignLib.Unauthorized();
+
+        _checkAndFinalizeVoting(milestoneId);
+    }
+
+    /**
      * @notice Complete a milestone and release funds to creator
      * @param milestoneId The ID of the milestone to complete
      */

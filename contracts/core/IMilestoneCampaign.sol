@@ -34,6 +34,7 @@ interface IMilestoneCampaign is ICampaign {
 
     function startMilestoneVoting(uint256 milestoneId, uint256 votingDuration) external;
     function voteOnMilestone(uint256 milestoneId, bool support) external;
+    function finalizeMilestoneVoting(uint256 milestoneId) external;
     function completeMilestone(uint256 milestoneId) external;
     function getMilestoneInfo(uint256 milestoneId) external view returns (MilestoneInfo memory);
     function getMilestoneCount() external view returns (uint256);

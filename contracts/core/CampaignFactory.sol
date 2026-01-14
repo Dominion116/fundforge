@@ -2,6 +2,7 @@
 pragma solidity ^0.8.20;
 
 import {Campaign} from "./Campaign.sol";
+import {MilestoneCampaign} from "./MilestoneCampaign.sol";
 import {ICampaign} from "./ICampaign.sol";
 
 import {Ownable} from "@openzeppelin/access/Ownable.sol";
@@ -23,6 +24,15 @@ contract CampaignFactory is Ownable {
         string title,
         uint256 goal,
         uint256 deadline
+    );
+
+    event MilestoneCampaignCreated(
+        address indexed campaignAddress,
+        address indexed creator,
+        string title,
+        uint256 goal,
+        uint256 deadline,
+        uint256 milestoneCount
     );
 
     function createCampaign(
@@ -51,6 +61,42 @@ contract CampaignFactory is Ownable {
             _title,
             _goal,
             block.timestamp + _duration
+        );
+
+        return campaignAddress;
+    }
+
+    function createMilestoneCampaign(
+        string memory _title,
+        string memory _description,
+        uint256 _goal,
+        uint256 _duration,
+        string[] memory _milestoneDescriptions,
+        uint256[] memory _milestoneAmounts
+    ) external returns (address) {
+        MilestoneCampaign newCampaign = new MilestoneCampaign(
+            msg.sender,
+            _title,
+            _description,
+            _goal,
+            _duration,
+            feeRecipient,
+            feePercentage,
+            _milestoneDescriptions,
+            _milestoneAmounts
+        );
+
+        address campaignAddress = address(newCampaign);
+        allCampaigns.push(campaignAddress);
+        creatorCampaigns[msg.sender].push(campaignAddress);
+
+        emit MilestoneCampaignCreated(
+            campaignAddress,
+            msg.sender,
+            _title,
+            _goal,
+            block.timestamp + _duration,
+            _milestoneDescriptions.length
         );
 
         return campaignAddress;

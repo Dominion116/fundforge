@@ -4,6 +4,8 @@ out = "out"
 libs = ["lib"]
 test = "test"
 script = "scripts"
+optimizer = true
+optimizer_runs = 200
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/config/README.md
 

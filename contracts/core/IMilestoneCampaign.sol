@@ -9,17 +9,17 @@ interface IMilestoneCampaign is ICampaign {
     struct Milestone {
         string description;
         uint256 amount;
-        uint256 votingDeadline;
+        uint48 votingDeadline;
+        MilestoneState state;
         uint256 votesFor;
         uint256 votesAgainst;
-        MilestoneState state;
         mapping(address => bool) hasVoted;
     }
 
     struct MilestoneInfo {
         string description;
         uint256 amount;
-        uint256 votingDeadline;
+        uint48 votingDeadline;
         uint256 votesFor;
         uint256 votesAgainst;
         MilestoneState state;

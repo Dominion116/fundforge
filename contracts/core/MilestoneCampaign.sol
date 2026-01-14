@@ -28,6 +28,7 @@ contract MilestoneCampaign is IMilestoneCampaign, ReentrancyGuard {
     
     // Milestone management
     Milestone[] private milestones;
+    uint256 public activeVotingCount;
     uint256 public constant VOTING_QUORUM_PERCENTAGE = 51; // 51% of contributors must vote
     uint256 public constant APPROVAL_THRESHOLD_PERCENTAGE = 66; // 66% must approve
 
@@ -69,7 +70,8 @@ contract MilestoneCampaign is IMilestoneCampaign, ReentrancyGuard {
 
         // Validate that milestone amounts sum up correctly
         uint256 totalMilestoneAmount = 0;
-        for (uint256 i = 0; i < _milestoneDescriptions.length; i++) {
+        uint256 milestoneCount = _milestoneDescriptions.length;
+        for (uint256 i = 0; i < milestoneCount; ) {
             if (_milestoneAmounts[i] == 0) revert InvalidMilestoneConfiguration();
             
             milestones.push();
@@ -81,6 +83,8 @@ contract MilestoneCampaign is IMilestoneCampaign, ReentrancyGuard {
             totalMilestoneAmount += _milestoneAmounts[i];
             
             emit MilestoneCreated(i, _milestoneDescriptions[i], _milestoneAmounts[i]);
+
+            unchecked { i++; }
         }
 
         // Milestone amounts should not exceed the goal
@@ -113,7 +117,8 @@ contract MilestoneCampaign is IMilestoneCampaign, ReentrancyGuard {
         if (milestone.state != MilestoneState.Pending) revert InvalidMilestoneState();
 
         milestone.state = MilestoneState.VotingActive;
-        milestone.votingDeadline = block.timestamp + votingDuration;
+        milestone.votingDeadline = uint48(block.timestamp + votingDuration);
+        activeVotingCount++;
 
         emit MilestoneVotingStarted(milestoneId, milestone.votingDeadline);
     }
@@ -211,11 +216,7 @@ contract MilestoneCampaign is IMilestoneCampaign, ReentrancyGuard {
         if (state == CampaignState.Successful) revert CampaignLib.Unauthorized();
 
         // This is a fallback - only allow if no milestones are in progress
-        for (uint256 i = 0; i < milestones.length; i++) {
-            if (milestones[i].state == MilestoneState.VotingActive) {
-                revert InvalidMilestoneState();
-            }
-        }
+        if (activeVotingCount > 0) revert InvalidMilestoneState();
 
         state = CampaignState.Successful;
         uint256 totalBalance = address(this).balance;
@@ -288,8 +289,10 @@ contract MilestoneCampaign is IMilestoneCampaign, ReentrancyGuard {
 
     function getTotalMilestoneAmount() external view override returns (uint256) {
         uint256 total = 0;
-        for (uint256 i = 0; i < milestones.length; i++) {
+        uint256 milestoneCount = milestones.length;
+        for (uint256 i = 0; i < milestoneCount; ) {
             total += milestones[i].amount;
+            unchecked { i++; }
         }
         return total;
     }
@@ -322,17 +325,21 @@ contract MilestoneCampaign is IMilestoneCampaign, ReentrancyGuard {
                 milestone.state = MilestoneState.Rejected;
                 emit MilestoneRejected(milestoneId);
             }
+            activeVotingCount--;
         }
     }
 
     function _checkCampaignCompletion() internal {
         bool allCompleted = true;
-        for (uint256 i = 0; i < milestones.length; i++) {
-            if (milestones[i].state != MilestoneState.Completed && 
-                milestones[i].state != MilestoneState.Rejected) {
+        uint256 milestoneCount = milestones.length;
+        for (uint256 i = 0; i < milestoneCount; ) {
+            MilestoneState milestoneState = milestones[i].state;
+            if (milestoneState != MilestoneState.Completed && 
+                milestoneState != MilestoneState.Rejected) {
                 allCompleted = false;
                 break;
             }
+            unchecked { i++; }
         }
 
         if (allCompleted && state != CampaignState.Successful) {

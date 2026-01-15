@@ -69,7 +69,7 @@ export const CampaignsPreview = () => {
               viewport={{ once: true }}
             >
               <Card className="flex flex-col h-full bg-card/40 border-white/5 backdrop-blur-sm hover:shadow-2xl hover:shadow-primary/5 transition-all overflow-hidden group">
-                <div className="h-48 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 relative">
+                <div className="h-48 bg-muted/20 relative">
                   {/* Image placeholder */}
                   <div className="absolute inset-0 flex items-center justify-center text-white/10 font-bold text-4xl">
                      {item.category.toUpperCase()}

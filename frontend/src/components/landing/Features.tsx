@@ -8,38 +8,32 @@ const features = [
   {
     title: 'Milestone-Based Funding',
     description: 'Funds are released in stages only after contributors vote to approve completed milestones.',
-    icon: CheckCircle2,
-    gradient: 'from-blue-500 to-cyan-500'
+    icon: CheckCircle2
   },
   {
     title: 'Contributor Governance',
     description: 'Every backer has a voice. Voting power is proportional to your contribution.',
-    icon: Users,
-    gradient: 'from-purple-500 to-indigo-500'
+    icon: Users
   },
   {
     title: 'Secure Smart Contracts',
     description: 'Built with industry-leading security patterns. Non-custodial and transparent.',
-    icon: Lock,
-    gradient: 'from-emerald-500 to-teal-500'
+    icon: Lock
   },
   {
     title: 'Real-time Analytics',
     description: 'Track campaign progress, funding velocity, and milestone status in real-time.',
-    icon: BarChart3,
-    gradient: 'from-orange-500 to-red-500'
+    icon: BarChart3
   },
   {
     title: 'Low Resistance Entry',
     description: 'Connect any wallet via Reown and start funding or creating in seconds.',
-    icon: Fingerprint,
-    gradient: 'from-pink-500 to-rose-500'
+    icon: Fingerprint
   },
   {
     title: 'Automatic Refunds',
     description: 'If a campaign fails to meet its deadline or target, 100% of funds are returned.',
-    icon: ShieldAlert,
-    gradient: 'from-yellow-500 to-amber-500'
+    icon: ShieldAlert
   }
 ]
 
@@ -64,10 +58,9 @@ export const Features = () => {
               viewport={{ once: true }}
             >
               <Card className="h-full bg-white/5 border-white/10 hover:border-primary/50 transition-colors group overflow-hidden relative">
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${feature.gradient} opacity-5 blur-3xl group-hover:opacity-20 transition-opacity`} />
                 <CardHeader>
-                  <div className={`size-12 rounded-none bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 shadow-lg shadow-black/20`}>
-                    <feature.icon className="size-6 text-white" />
+                  <div className="size-12 rounded-none bg-primary flex items-center justify-center mb-4">
+                    <feature.icon className="size-6 text-primary-foreground" />
                   </div>
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
                 </CardHeader>

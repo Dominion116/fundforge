@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Shield, Zap, Globe } from 'lucide-react'
+import { ConnectWalletButton } from '@/components/ConnectWalletButton'
 
 export const Hero = () => {
   return (
@@ -33,7 +34,7 @@ export const Hero = () => {
               Start a Campaign
               <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <appkit-button />
+            <ConnectWalletButton size="lg" className="h-14 px-8 text-lg" />
           </div>
         </motion.div>
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { WagmiProvider, type Config } from 'wagmi'
-import { mainnet, arbitrum, base, baseSepolia } from 'wagmi/chains'
+import { mainnet, base, baseSepolia } from 'wagmi/chains'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createAppKit } from '@reown/appkit/react'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
@@ -38,7 +38,14 @@ createAppKit({
   features: {
     analytics: true
   },
-  themeMode: 'dark'
+  themeMode: 'dark',
+  themeVariables: {
+    '--w3m-accent': 'hsl(180, 77.1144%, 60.5882%)',
+    '--w3m-border-radius-master': '0px',
+    '--w3m-font-family': 'Source Code Pro, monospace',
+    '--w3m-color-mix': 'hsl(180, 77.1144%, 60.5882%)',
+    '--w3m-color-mix-strength': 15,
+  }
 })
 
 // 5. Create Query Client

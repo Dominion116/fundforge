@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
+import { ConnectWalletButton } from '@/components/ConnectWalletButton'
 
 export const Navbar = () => {
   return (
@@ -28,7 +28,7 @@ export const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <appkit-button balance="show" />
+          <ConnectWalletButton />
         </div>
       </div>
     </motion.nav>

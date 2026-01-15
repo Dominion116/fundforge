@@ -54,7 +54,7 @@ export const CampaignsPreview = () => {
               Be the first to back these revolutionary projects and participate in their development cycle.
             </p>
           </div>
-          <Button variant="outline" size="lg" className="rounded-full">
+          <Button variant="outline" size="lg" className="rounded-none">
             View All Campaigns
           </Button>
         </div>
@@ -111,7 +111,7 @@ export const CampaignsPreview = () => {
                 </CardContent>
                 
                 <CardFooter className="pt-0">
-                  <Button className="w-full rounded-xl py-6" variant="secondary">
+                  <Button className="w-full rounded-none py-6" variant="secondary">
                     Fund Project
                   </Button>
                 </CardFooter>

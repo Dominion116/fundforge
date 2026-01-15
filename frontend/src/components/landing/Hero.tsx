@@ -19,7 +19,7 @@ export const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+          <span className="inline-block py-1 px-3 rounded-none bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
             The Future of Crowdfunding
           </span>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
@@ -33,7 +33,7 @@ export const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="h-14 px-8 text-lg rounded-full group">
+            <Button size="lg" className="h-14 px-8 text-lg rounded-none group">
               Start a Campaign
               <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -55,7 +55,7 @@ export const Hero = () => {
             { icon: ArrowRight, label: 'Milestone Voting', color: 'blue' }
           ].map((item, i) => (
             <div key={i} className="flex flex-col items-center gap-2">
-              <div className="size-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-2">
+              <div className="size-12 rounded-none bg-white/5 border border-white/10 flex items-center justify-center mb-2">
                 <item.icon className="size-6 text-white/70" />
               </div>
               <span className="text-sm font-medium text-muted-foreground">{item.label}</span>

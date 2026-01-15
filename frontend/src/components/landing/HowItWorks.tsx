@@ -46,10 +46,10 @@ export const HowItWorks = () => {
                 viewport={{ once: true }}
                 className="relative z-10 flex flex-col items-center text-center group"
               >
-                <div className="size-20 rounded-full bg-background border-4 border-primary/20 group-hover:border-primary transition-colors flex items-center justify-center mb-6 shadow-xl shadow-primary/5">
+                <div className="size-20 rounded-none bg-background border-4 border-primary/20 group-hover:border-primary transition-colors flex items-center justify-center mb-6 shadow-xl shadow-primary/5">
                   <step.icon className="size-8 text-primary" />
                   {/* Step number badge */}
-                  <div className="absolute -top-2 -right-2 size-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center">
+                  <div className="absolute -top-2 -right-2 size-8 rounded-none bg-primary text-white text-sm font-bold flex items-center justify-center">
                     {i + 1}
                   </div>
                 </div>

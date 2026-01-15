@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="size-8 rounded-lg bg-primary flex items-center justify-center">
+              <div className="size-8 rounded-none bg-primary flex items-center justify-center">
                 <span className="text-white font-bold">F</span>
               </div>
               <span className="text-xl font-bold tracking-tight">FundForge</span>
@@ -43,13 +43,13 @@ export const Footer = () => {
           <div>
             <h4 className="font-bold mb-6">Community</h4>
             <div className="flex gap-4 mb-6">
-              <Link href="#" className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/50 transition-all">
+              <Link href="#" className="size-10 rounded-none bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/50 transition-all">
                 <Twitter className="size-5" />
               </Link>
-              <Link href="#" className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/50 transition-all">
+              <Link href="#" className="size-10 rounded-none bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/50 transition-all">
                 <Github className="size-5" />
               </Link>
-              <Link href="#" className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/50 transition-all">
+              <Link href="#" className="size-10 rounded-none bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/50 transition-all">
                 <Linkedin className="size-5" />
               </Link>
             </div>

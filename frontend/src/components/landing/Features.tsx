@@ -66,7 +66,7 @@ export const Features = () => {
               <Card className="h-full bg-white/5 border-white/10 hover:border-primary/50 transition-colors group overflow-hidden relative">
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${feature.gradient} opacity-5 blur-3xl group-hover:opacity-20 transition-opacity`} />
                 <CardHeader>
-                  <div className={`size-12 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 shadow-lg shadow-black/20`}>
+                  <div className={`size-12 rounded-none bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 shadow-lg shadow-black/20`}>
                     <feature.icon className="size-6 text-white" />
                   </div>
                   <CardTitle className="text-xl">{feature.title}</CardTitle>

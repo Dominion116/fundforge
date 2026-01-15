@@ -27,11 +27,13 @@ dist-ssr/
 .env.*
 !.env.example
 
-# Documentation (tracked)
-# docs/ is NOT ignored anymore to allow project documentation
-
 # Testing
 test-results/
 
-# Documentation
+# Frontend (specific exclusions for monorepo root)
+/frontend/.next/
+/frontend/node_modules/
+/frontend/out/
+
+# Custom
 *.md

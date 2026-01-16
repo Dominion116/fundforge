@@ -45,8 +45,13 @@ const campaigns = [
 
 export const CampaignsPreview = () => {
   return (
-    <section id="campaigns" className="py-32 bg-background/50">
+    <section id="campaigns" className="py-20 bg-background/50">
       <div className="container mx-auto px-6">
+        <div className="mb-6 flex justify-center">
+          <Badge variant="secondary" className="rounded-none py-1 border-border">
+            Explore Opportunities
+          </Badge>
+        </div>
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
           <div className="text-left">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter mb-6">

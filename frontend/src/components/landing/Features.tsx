@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { CheckCircle2, Lock, Users, BarChart3, Fingerprint, ShieldAlert } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
 
 const features = [
   {
@@ -39,9 +40,14 @@ const features = [
 
 export const Features = () => {
   return (
-    <section id="features" className="py-32 bg-background relative overflow-hidden">
+    <section id="features" className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
+          <div className="mb-6 flex justify-center">
+            <Badge variant="secondary" className="rounded-none py-1 border-border">
+              Platform Features
+            </Badge>
+          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter mb-6">
             Why Choose FundForge?
           </h2>

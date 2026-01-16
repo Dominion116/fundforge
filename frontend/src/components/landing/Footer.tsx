@@ -5,7 +5,7 @@ import { Twitter, Github, Linkedin, Mail } from 'lucide-react'
 
 export const Footer = () => {
   return (
-    <footer className="py-24 border-t border-border/40 bg-card/20 backdrop-blur-sm">
+    <footer className="py-16 border-t border-border/40 bg-card/20 backdrop-blur-sm">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="md:col-span-1">

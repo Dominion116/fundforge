@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Wallet, PlusCircle, Vote } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
 
 const steps = [
   {
@@ -23,9 +24,14 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="py-32 relative overflow-hidden">
+    <section id="how-it-works" className="py-20 relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-24">
+          <div className="mb-6 flex justify-center">
+            <Badge variant="secondary" className="rounded-none py-1 border-border">
+              Step-by-Step
+            </Badge>
+          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter mb-6">
             How It Works
           </h2>

@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/landing/Hero";
+import Hero from "@/components/hero";
 import { Features } from "@/components/landing/Features";
 import { CampaignsPreview } from "@/components/landing/CampaignsPreview";
 import { HowItWorks } from "@/components/landing/HowItWorks";

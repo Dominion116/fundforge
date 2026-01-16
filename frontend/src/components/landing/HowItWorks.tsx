@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Wallet, PlusCircle, Vote } from 'lucide-react'
+import { Wallet, PlusCircle, Vote, ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 
 const steps = [
@@ -24,7 +24,7 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="py-20 relative overflow-hidden">
+    <section id="how-it-works" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-24">
           <div className="mb-6 flex justify-center">
@@ -40,32 +40,55 @@ export const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="relative">
-          {/* Connector line (desktop) */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-border -translate-y-1/2 z-0" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-            {steps.map((step, i) => (
+        <div className="flex flex-col md:flex-row items-start justify-center relative">
+          {steps.map((step, i) => (
+            <div key={i} className="contents md:flex hover:bg-none">
+              {/* Step Item */}
               <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.2 }}
                 viewport={{ once: true }}
-                className="relative z-10 flex flex-col items-center text-center group"
+                className="relative flex flex-col items-center text-center flex-1 max-w-sm mx-auto md:mx-0"
               >
-                <div className="size-20 rounded-none bg-background border-4 border-primary/20 group-hover:border-primary transition-colors flex items-center justify-center mb-8 shadow-xl shadow-primary/5">
-                  <step.icon className="size-8 text-primary" />
-                  {/* Step number badge */}
-                  <div className="absolute -top-2 -right-2 size-8 rounded-none bg-primary text-white text-sm font-bold flex items-center justify-center">
-                    {i + 1}
+                {/* Icon Container */}
+                <div className="relative mb-8 group">
+                  <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+                  <div className="size-20 rounded-2xl bg-background border border-border flex items-center justify-center relative z-10 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-primary/25">
+                    <step.icon className="size-8 text-foreground group-hover:text-primary transition-colors" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold tracking-tight mb-4">{step.title}</h3>
-                <p className="text-base text-foreground/70 leading-relaxed">{step.description}</p>
+
+                {/* Content */}
+                <h3 className="text-xl font-semibold tracking-tight mb-3">{step.title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed px-4">
+                  {step.description}
+                </p>
               </motion.div>
-            ))}
-          </div>
+
+              {/* Connector (Desktop) */}
+              {i < steps.length - 1 && (
+                <div className="hidden md:flex flex-col justify-center items-center flex-none w-16 lg:w-32 pt-10 px-2 opacity-30">
+                  <div className="w-full h-px border-t-2 border-dashed border-foreground/30 relative">
+                     <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2">
+                       <ArrowRight className="size-4 text-foreground/50" />
+                     </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Connector (Mobile) */}
+              {i < steps.length - 1 && (
+                 <div className="md:hidden flex justify-center py-8 opacity-30">
+                    <div className="h-12 w-px border-l-2 border-dashed border-foreground/30 relative">
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+                         <div className="size-2 bg-foreground/50 rounded-full" />
+                      </div>
+                    </div>
+                 </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

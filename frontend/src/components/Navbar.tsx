@@ -11,7 +11,7 @@ export const Navbar = () => {
       animate={{ y: 0 }}
       className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md"
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-6">
+      <div className="container mx-auto flex h-20 items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2">
           <div className="size-10 rounded-none bg-primary flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-lg">F</span>

@@ -35,7 +35,7 @@ export const HowItWorks = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter mb-6">
             How It Works
           </h2>
-          <p className="mt-4 text-base text-foreground/80 max-w-2xl mx-auto">
+          <p className="mt-4 text-sm text-foreground/80 max-w-2xl mx-auto">
             Participating in the future of crowdfunding is simpler than ever with our transparent milestone system.
           </p>
         </div>
@@ -60,8 +60,8 @@ export const HowItWorks = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-semibold tracking-tight mb-3">{step.title}</h3>
-                <p className="text-base text-muted-foreground leading-relaxed px-4">
+                <h3 className="text-lg font-semibold tracking-tight mb-3">{step.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed px-4">
                   {step.description}
                 </p>
               </motion.div>

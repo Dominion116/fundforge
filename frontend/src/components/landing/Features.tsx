@@ -39,16 +39,18 @@ const features = [
 
 export const Features = () => {
   return (
-    <section id="features" className="py-24 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Why Choose FundForge?</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            We've reimagined crowdfunding to put control and trust back into the hands of contributors.
+    <section id="features" className="py-32 bg-background relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter mb-6">
+            Why Choose FundForge?
+          </h2>
+          <p className="mt-4 text-base text-foreground/80 max-w-2xl mx-auto">
+            We've reimagined crowdfunding to put control and trust back into the hands of contributors through milestone-based verification.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, i) => (
             <motion.div
               key={i}
@@ -57,15 +59,15 @@ export const Features = () => {
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full bg-white/5 border-white/10 hover:border-primary/50 transition-colors group overflow-hidden relative">
+              <Card className="h-full bg-white/5 border-white/10 hover:border-primary/50 transition-colors group overflow-hidden relative rounded-none">
                 <CardHeader>
-                  <div className="size-12 rounded-none bg-primary flex items-center justify-center mb-4">
+                  <div className="size-12 rounded-none bg-primary flex items-center justify-center mb-6">
                     <feature.icon className="size-6 text-primary-foreground" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl font-semibold tracking-tight">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base text-muted-foreground">
+                  <CardDescription className="text-base text-foreground/70 leading-relaxed">
                     {feature.description}
                   </CardDescription>
                 </CardContent>

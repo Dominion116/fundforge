@@ -45,16 +45,18 @@ const campaigns = [
 
 export const CampaignsPreview = () => {
   return (
-    <section id="campaigns" className="py-24 bg-background/50">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
+    <section id="campaigns" className="py-32 bg-background/50">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
           <div className="text-left">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Live Campaigns</h2>
-            <p className="text-muted-foreground max-w-xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter mb-6">
+              Live Campaigns
+            </h2>
+            <p className="mt-4 text-base text-foreground/80 max-w-xl">
               Be the first to back these revolutionary projects and participate in their development cycle.
             </p>
           </div>
-          <Button variant="outline" size="lg" className="rounded-none">
+          <Button variant="outline" size="lg" className="rounded-none text-base px-8">
             View All Campaigns
           </Button>
         </div>

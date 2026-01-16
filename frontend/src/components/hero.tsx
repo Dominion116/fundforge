@@ -19,7 +19,7 @@ export default function Hero() {
           asChild
         >
           <Link href="#">
-            Deployed on Base Mainnet <ArrowRight className="ml-1 size-4" />
+            ✦ Deployed on Base Mainnet <ArrowRight className="ml-1 size-4" />
           </Link>
         </Badge>
         <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter">

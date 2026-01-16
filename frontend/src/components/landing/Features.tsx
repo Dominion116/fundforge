@@ -45,7 +45,7 @@ export const Features = () => {
         <div className="text-center mb-20">
           <div className="mb-6 flex justify-center">
             <Badge variant="secondary" className="rounded-none py-1 border-border">
-              Platform Features
+              ✦ Platform Features
             </Badge>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter mb-6">

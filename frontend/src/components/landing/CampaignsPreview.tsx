@@ -49,7 +49,7 @@ export const CampaignsPreview = () => {
       <div className="container mx-auto px-6">
         <div className="mb-6 flex justify-center">
           <Badge variant="secondary" className="rounded-none py-1 border-border">
-            Explore Opportunities
+            ✦ Explore Opportunities
           </Badge>
         </div>
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
@@ -82,7 +82,7 @@ export const CampaignsPreview = () => {
                      {item.category.toUpperCase()}
                   </div>
                   <Badge className="absolute top-4 right-4 bg-primary/20 text-primary border-primary/20 backdrop-blur-md">
-                    {item.category}
+                    ✦ {item.category}
                   </Badge>
                 </div>
                 

@@ -29,7 +29,7 @@ export const HowItWorks = () => {
         <div className="text-center mb-24">
           <div className="mb-6 flex justify-center">
             <Badge variant="secondary" className="rounded-none py-1 border-border">
-              Step-by-Step
+              ✦ Step-by-Step
             </Badge>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter mb-6">

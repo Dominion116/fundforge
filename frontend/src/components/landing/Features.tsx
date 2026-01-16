@@ -51,7 +51,7 @@ export const Features = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter mb-6">
             Why Choose FundForge?
           </h2>
-          <p className="mt-4 text-base text-foreground/80 max-w-2xl mx-auto">
+          <p className="mt-4 text-sm text-foreground/80 max-w-2xl mx-auto">
             We've reimagined crowdfunding to put control and trust back into the hands of contributors through milestone-based verification.
           </p>
         </div>
@@ -73,7 +73,7 @@ export const Features = () => {
                   <CardTitle className="text-xl font-semibold tracking-tight">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base text-foreground/70 leading-relaxed">
+                  <CardDescription className="text-sm text-foreground/70 leading-relaxed">
                     {feature.description}
                   </CardDescription>
                 </CardContent>

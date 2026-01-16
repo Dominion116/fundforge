@@ -26,7 +26,7 @@ export const HowItWorks = () => {
   return (
     <section id="how-it-works" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-24">
+        <div className="text-center mb-16">
           <div className="mb-6 flex justify-center">
             <Badge variant="secondary" className="rounded-none py-1 border-border">
               ✦ Step-by-Step

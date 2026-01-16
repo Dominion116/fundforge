@@ -54,8 +54,8 @@ export const HowItWorks = () => {
                 {/* Icon Container */}
                 <div className="relative mb-8 group">
                   <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
-                  <div className="size-20 rounded-2xl bg-background border border-border flex items-center justify-center relative z-10 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-primary/25">
-                    <step.icon className="size-8 text-foreground group-hover:text-primary transition-colors" />
+                  <div className="size-16 rounded-2xl bg-background border border-border flex items-center justify-center relative z-10 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-primary/25">
+                    <step.icon className="size-6 text-foreground group-hover:text-primary transition-colors" />
                   </div>
                 </div>
 
@@ -68,7 +68,7 @@ export const HowItWorks = () => {
 
               {/* Connector (Desktop) */}
               {i < steps.length - 1 && (
-                <div className="hidden md:flex flex-col justify-center items-center flex-none w-16 lg:w-32 pt-10 px-2 opacity-30">
+                <div className="hidden md:flex flex-col justify-center items-center flex-none w-16 lg:w-32 pt-8 px-2 opacity-30">
                   <div className="w-full h-px border-t-2 border-dashed border-foreground/30 relative">
                      <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2">
                        <ArrowRight className="size-4 text-foreground/50" />

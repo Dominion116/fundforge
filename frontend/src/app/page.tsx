@@ -3,6 +3,7 @@ import Hero from "@/components/hero";
 import { Features } from "@/components/landing/Features";
 import { CampaignsPreview } from "@/components/landing/CampaignsPreview";
 import { HowItWorks } from "@/components/landing/HowItWorks";
+import FAQ from "@/components/faq";
 import { Footer } from "@/components/landing/Footer";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Features />
       <CampaignsPreview />
       <HowItWorks />
+      <FAQ />
       <Footer />
     </main>
   );

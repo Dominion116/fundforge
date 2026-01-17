@@ -110,12 +110,12 @@ export default function CreateCampaignPage() {
   }
 
   return (
-    <div className="container mx-auto px-6 py-20">
-      <div className="mb-8 text-center md:text-left">
-        <h1 className="text-4xl font-bold tracking-tighter mb-4 flex items-center justify-center md:justify-start gap-3">
+    <div className="container mx-auto px-6 py-20 max-w-3xl">
+      <div className="mb-12 text-center">
+        <h1 className="text-4xl font-bold tracking-tighter mb-4">
             Launch Your Campaign
         </h1>
-        <p className="text-muted-foreground max-w-2xl">
+        <p className="text-muted-foreground text-sm max-w-xl mx-auto">
           Create a transparent, milestone-based crowdfunding campaign. 
           Define your goals, set your milestones, and build trust with your contributors from day one.
         </p>

@@ -20,9 +20,9 @@ export const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold tracking-tight mb-4 uppercase text-foreground/50">Platform</h4>
             <ul className="space-y-3 text-sm text-foreground/70">
-              <li><Link href="#campaigns" className="hover:text-foreground transition-colors">Browse Campaigns</Link></li>
-              <li><Link href="#" className="hover:text-foreground transition-colors">Create Project</Link></li>
-              <li><Link href="#how-it-works" className="hover:text-foreground transition-colors">How it Works</Link></li>
+              <li><Link href="/explore" className="hover:text-foreground transition-colors">Browse Campaigns</Link></li>
+              <li><Link href="/create" className="hover:text-foreground transition-colors">Create Project</Link></li>
+              <li><Link href="/#how-it-works" className="hover:text-foreground transition-colors">How it Works</Link></li>
               <li><Link href="#" className="hover:text-foreground transition-colors">Staking</Link></li>
             </ul>
           </div>

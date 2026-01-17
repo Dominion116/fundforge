@@ -30,8 +30,10 @@ export default function Hero() {
           Built on blockchain for transparency and trust.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button size="lg" className="rounded-none text-base px-8 group">
-            Start a Campaign <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
+          <Button size="lg" className="rounded-none text-base px-8 group" asChild>
+            <Link href="/create">
+              Start a Campaign <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
           <ConnectWalletButton size="lg" className="px-8 text-base" />
         </div>

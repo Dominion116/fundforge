@@ -10,9 +10,6 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="size-8 rounded-none bg-primary flex items-center justify-center">
-                <span className="text-white font-bold">F</span>
-              </div>
               <span className="text-xl font-bold tracking-tighter">FundForge</span>
             </Link>
             <p className="text-sm text-foreground/70 leading-relaxed">

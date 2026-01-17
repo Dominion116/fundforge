@@ -13,9 +13,6 @@ export const Navbar = () => {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2">
-          <div className="size-10 rounded-none bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">F</span>
-          </div>
           <span className="text-xl font-bold tracking-tighter text-foreground">
             FundForge
           </span>

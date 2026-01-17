@@ -11,7 +11,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
+
 import { format } from 'date-fns';
 import { CalendarIcon, Loader2, Plus, Trash2, Rocket, Flag, Clock, Target } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -110,10 +110,9 @@ export default function CreateCampaignPage() {
   }
 
   return (
-    <div className="container mx-auto px-6 py-12 max-w-4xl">
+    <div className="container mx-auto px-6 py-20">
       <div className="mb-8 text-center md:text-left">
         <h1 className="text-4xl font-bold tracking-tighter mb-4 flex items-center justify-center md:justify-start gap-3">
-            <Rocket className="size-8 text-primary" />
             Launch Your Campaign
         </h1>
         <p className="text-muted-foreground max-w-2xl">
@@ -239,9 +238,9 @@ export default function CreateCampaignPage() {
                 </div>
 
                 {milestones.map((milestone, index) => (
-                    <div key={index} className="flex gap-4 items-start animate-in fade-in slide-in-from-bottom-2 duration-300">
-                        <div className="flex-grow space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:flex">
-                             <div className="flex-grow space-y-2">
+                    <div key={index} className="flex flex-col md:flex-row gap-4 items-end animate-in fade-in slide-in-from-bottom-2 duration-300">
+                        <div className="grid grid-cols-1 md:grid-cols-[1fr_200px] gap-4 w-full">
+                             <div className="space-y-2">
                                 <Label className="text-xs text-muted-foreground">Milestone {index + 1} Description</Label>
                                 <Input 
                                     placeholder="What will you deliver?" 
@@ -250,7 +249,7 @@ export default function CreateCampaignPage() {
                                     className="bg-background/50"
                                 />
                              </div>
-                             <div className="w-full md:w-48 space-y-2">
+                             <div className="space-y-2">
                                 <Label className="text-xs text-muted-foreground">Amount (ETH)</Label>
                                 <Input 
                                     type="number" 
@@ -267,11 +266,11 @@ export default function CreateCampaignPage() {
                             type="button" 
                             variant="ghost" 
                             size="icon" 
-                            className="mt-6 text-muted-foreground hover:text-destructive"
+                            className="text-muted-foreground hover:text-destructive shrink-0 mb-0.5"
                             onClick={() => removeMilestone(index)}
                             disabled={milestones.length === 1}
                         >
-                            <Trash2 className="size-4" />
+                            <Trash2 className="size-5" />
                         </Button>
                     </div>
                 ))}
@@ -300,7 +299,6 @@ export default function CreateCampaignPage() {
                 ) : (
                     <>
                         Deploy Contract
-                        <Rocket className="ml-2 size-5" />
                     </>
                 )}
             </Button>

@@ -11,7 +11,6 @@ export default function CreateLayout({
     <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
       <div className="pt-20 flex-grow">
-        <BackgroundPattern />
         <div className="relative z-10">
              {children}
         </div>

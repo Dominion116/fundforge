@@ -40,7 +40,7 @@ export const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-start justify-center relative">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-center relative">
           {steps.map((step, i) => (
             <div key={i} className="contents md:flex hover:bg-none">
               {/* Step Item */}

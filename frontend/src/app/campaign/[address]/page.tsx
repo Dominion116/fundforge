@@ -73,36 +73,36 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
   const displayProgress = Math.min(progress, 100);
 
   return (
-    <div className="container mx-auto px-6 py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+    <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
         {/* Left Column: Campaign Details & Milestones */}
         <div className="lg:col-span-2 space-y-12">
           {/* Campaign Header */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary" className="rounded-none py-1 border-border">
+              <Badge variant="secondary" className="rounded-none py-1 border-border text-xs">
                 ✦ Milestone Campaign
               </Badge>
-              {campaign.state === 0 && <Badge variant="secondary" className="rounded-none bg-emerald-500/20 text-emerald-500 border-emerald-500/50">Active</Badge>}
-              {campaign.state === 1 && <Badge variant="secondary" className="rounded-none bg-blue-500/20 text-blue-500 border-blue-500/50">Successful</Badge>}
-              {campaign.state === 2 && <Badge variant="destructive" className="rounded-none">Failed</Badge>}
+              {campaign.state === 0 && <Badge variant="secondary" className="rounded-none bg-emerald-500/20 text-emerald-500 border-emerald-500/50 text-xs">Active</Badge>}
+              {campaign.state === 1 && <Badge variant="secondary" className="rounded-none bg-blue-500/20 text-blue-500 border-blue-500/50 text-xs">Successful</Badge>}
+              {campaign.state === 2 && <Badge variant="destructive" className="rounded-none text-xs">Failed</Badge>}
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tighter">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter leading-tight">
               {campaign.title}
             </h1>
             
-            <p className="text-base text-foreground/80 leading-relaxed max-w-3xl">
+            <p className="text-sm sm:text-base text-foreground/80 leading-relaxed">
               {campaign.description}
             </p>
 
-            <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <User className="size-4" />
-                <span>Created by <span className="text-foreground font-mono">{campaign.creator.slice(0, 6)}...{campaign.creator.slice(-4)}</span></span>
+                <User className="size-4 shrink-0" />
+                <span className="truncate">Created by <span className="text-foreground font-mono">{campaign.creator.slice(0, 6)}...{campaign.creator.slice(-4)}</span></span>
               </div>
               <div className="flex items-center gap-2">
-                <Calendar className="size-4" />
+                <Calendar className="size-4 shrink-0" />
                 <span>Deadline: <span className="text-foreground">{new Date(Number(campaign.deadline) * 1000).toLocaleDateString()}</span></span>
               </div>
             </div>
@@ -148,33 +148,33 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
           <Separator />
 
           {/* Milestones Section */}
-          <div className="space-y-8">
-            <div className="flex items-center justify-between">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div className="flex items-center gap-3">
-                <Shield className="size-6 text-primary" />
-                <h2 className="text-3xl font-semibold tracking-tighter">Project Milestones</h2>
+                <Shield className="size-5 sm:size-6 text-primary shrink-0" />
+                <h2 className="text-2xl sm:text-3xl font-semibold tracking-tighter">Project Milestones</h2>
               </div>
-              <Badge variant="outline" className="rounded-none text-xs">
+              <Badge variant="outline" className="rounded-none text-xs w-fit">
                 {milestones.length} Total
               </Badge>
             </div>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {milestones.map((milestone, index) => (
                 <Card key={index} className="bg-card/40 backdrop-blur-sm border-border/50 overflow-hidden">
-                  <CardHeader>
-                    <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-3">
+                  <CardHeader className="p-4 sm:p-6">
+                    <div className="flex flex-col gap-4">
+                      <div className="space-y-3">
+                        <div className="flex items-start gap-3">
                           <div className={cn(
-                            "size-8 flex items-center justify-center border bg-background",
+                            "size-8 shrink-0 flex items-center justify-center border bg-background",
                             milestone.state === 3 ? "border-emerald-500 text-emerald-500" : "border-border text-muted-foreground"
                           )}>
                             {milestone.state === 3 ? <CheckCircle2 className="size-5" /> : <span className="text-sm font-semibold">{index + 1}</span>}
                           </div>
-                          <CardTitle className="text-xl font-semibold tracking-tight">{milestone.description}</CardTitle>
+                          <CardTitle className="text-base sm:text-xl font-semibold tracking-tight leading-tight flex-1">{milestone.description}</CardTitle>
                         </div>
-                        <div className="flex items-center gap-2 pl-11">
+                        <div className="flex flex-wrap items-center gap-2 pl-0 sm:pl-11">
                           {milestone.state === 0 && <Badge variant="outline" className="rounded-none text-xs bg-amber-500/10 text-amber-500 border-amber-500/20">Pending</Badge>}
                           {milestone.state === 1 && <Badge variant="outline" className="rounded-none text-xs bg-blue-500/10 text-blue-500 border-blue-500/20">Voting Active</Badge>}
                           {milestone.state === 2 && <Badge variant="outline" className="rounded-none text-xs bg-emerald-500/10 text-emerald-500 border-emerald-500/20">Approved</Badge>}
@@ -182,21 +182,21 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
                           {milestone.state === 4 && <Badge variant="outline" className="rounded-none text-xs bg-destructive/10 text-destructive border-destructive/20">Rejected</Badge>}
                         </div>
                       </div>
-                      <div className="px-3 py-1 bg-secondary/50 border border-border text-sm font-semibold">
+                      <div className="px-3 py-1.5 bg-secondary/50 border border-border text-sm font-semibold w-fit">
                         {formatEther(milestone.amount)} ETH
                       </div>
                     </div>
                   </CardHeader>
                   
                   {milestone.state === 1 && (
-                    <CardContent className="pt-0">
-                      <div className="p-4 bg-primary/5 border border-primary/10 space-y-4">
-                        <div className="flex justify-between text-xs font-medium">
+                    <CardContent className="pt-0 px-4 sm:px-6 pb-4 sm:pb-6">
+                      <div className="p-3 sm:p-4 bg-primary/5 border border-primary/10 space-y-3 sm:space-y-4">
+                        <div className="flex flex-col sm:flex-row sm:justify-between gap-2 text-xs font-medium">
                           <span className="text-primary">VOTING IN PROGRESS</span>
                           <span className="text-muted-foreground">Ends: {new Date(Number(milestone.votingDeadline) * 1000).toLocaleDateString()}</span>
                         </div>
                         
-                        <div className="grid grid-cols-2 gap-4 text-xs">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs">
                           <div className="space-y-1">
                             <div className="flex justify-between">
                               <span className="text-muted-foreground">For</span>
@@ -219,12 +219,12 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
                           </div>
                         </div>
 
-                        <div className="flex gap-3 pt-2">
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2">
                           <Button 
                             size="sm" 
                             onClick={() => vote(index, true)}
                             disabled={isVoting}
-                            className="flex-1 rounded-none bg-emerald-500 hover:bg-emerald-600 text-white"
+                            className="flex-1 rounded-none bg-emerald-500 hover:bg-emerald-600 text-white w-full"
                           >
                             Approve
                           </Button>
@@ -233,7 +233,7 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
                             variant="outline"
                             disabled={isVoting}
                             onClick={() => vote(index, false)}
-                            className="flex-1 rounded-none border-destructive/30 hover:bg-destructive/10 text-destructive"
+                            className="flex-1 rounded-none border-destructive/30 hover:bg-destructive/10 text-destructive w-full"
                           >
                             Reject
                           </Button>
@@ -249,32 +249,32 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
 
         {/* Right Column: Funding Widget */}
         <div className="space-y-6">
-          <Card className="sticky top-24 bg-card/40 backdrop-blur-sm border-border/50">
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold tracking-tight">Back This Project</CardTitle>
-              <CardDescription className="text-sm text-foreground/70">
+          <Card className="lg:sticky lg:top-24 bg-card/40 backdrop-blur-sm border-border/50">
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-lg sm:text-xl font-semibold tracking-tight">Back This Project</CardTitle>
+              <CardDescription className="text-xs sm:text-sm text-foreground/70">
                 Support this campaign to unlock milestones.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 pt-0">
               {/* Funding Progress */}
-              <div className="space-y-4">
-                <div className="flex justify-between items-end">
-                  <div className="space-y-1">
-                    <span className="text-3xl font-semibold tracking-tighter">{formatEther(campaign.totalContributed)} ETH</span>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex justify-between items-end gap-4">
+                  <div className="space-y-0.5">
+                    <span className="text-2xl sm:text-3xl font-semibold tracking-tighter block">{formatEther(campaign.totalContributed)} ETH</span>
                     <p className="text-xs text-muted-foreground">raised</p>
                   </div>
                   <div className="text-right">
-                    <span className="text-lg font-semibold text-muted-foreground">{formatEther(campaign.goal)} ETH</span>
+                    <span className="text-base sm:text-lg font-semibold text-muted-foreground block">{formatEther(campaign.goal)} ETH</span>
                     <p className="text-xs text-muted-foreground">goal</p>
                   </div>
                 </div>
                 <Progress value={displayProgress} className="h-2" />
-                <div className="flex justify-between items-center text-xs">
-                  <Badge variant="outline" className="rounded-none">{progress}% funded</Badge>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 text-xs">
+                  <Badge variant="outline" className="rounded-none w-fit">{progress}% funded</Badge>
                   <span className="flex items-center gap-1 text-muted-foreground">
-                    <Target className="size-3" />
-                    {formatEther(campaign.goal - campaign.totalContributed < 0n ? 0n : campaign.goal - campaign.totalContributed)} ETH to go
+                    <Target className="size-3 shrink-0" />
+                    <span className="truncate">{formatEther(campaign.goal - campaign.totalContributed < 0n ? 0n : campaign.goal - campaign.totalContributed)} ETH to go</span>
                   </span>
                 </div>
               </div>
@@ -284,7 +284,7 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
               {/* Contribution Form */}
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="amount" className="text-sm font-medium">Contribution Amount (ETH)</Label>
+                  <Label htmlFor="amount" className="text-xs sm:text-sm font-medium">Contribution Amount (ETH)</Label>
                   <div className="relative">
                     <Input 
                       id="amount"
@@ -293,14 +293,14 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
                       placeholder="0.1"
                       value={contributionAmount}
                       onChange={(e) => setContributionAmount(e.target.value)}
-                      className="pl-8 bg-background/50"
+                      className="pl-8 bg-background/50 text-base"
                     />
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground font-semibold text-sm">Ξ</span>
                   </div>
                 </div>
                 
                 <Button 
-                  className="w-full rounded-none py-6 text-base font-semibold" 
+                  className="w-full rounded-none py-5 sm:py-6 text-sm sm:text-base font-semibold" 
                   onClick={handleContribute}
                   disabled={isContributing || isConfirmingContribute || campaign.state !== 0}
                 >

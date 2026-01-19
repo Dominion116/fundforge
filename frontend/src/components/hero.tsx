@@ -12,7 +12,7 @@ export default function Hero() {
     <div className="min-h-screen flex items-center justify-center px-6">
       <BackgroundPattern />
 
-      <div className="relative z-10 text-center max-w-3xl">
+      <div className="relative z-10 text-center max-w-5xl">
         <Badge
           variant="secondary"
           className="rounded-none py-1 border-border"
@@ -22,7 +22,7 @@ export default function Hero() {
             ✦ Deployed on Base Mainnet <ArrowRight className="ml-1 size-4" />
           </Link>
         </Badge>
-        <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-5xl md:leading-[1.2] font-semibold tracking-tighter">
+        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl md:leading-[1.1] font-semibold tracking-tighter">
           Decentralized Crowdfunding with Milestone-Based Accountability
         </h1>
         <p className="mt-4 text-base text-foreground/80 max-w-2xl mx-auto">

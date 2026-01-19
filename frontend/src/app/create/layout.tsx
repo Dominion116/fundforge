@@ -1,6 +1,11 @@
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/landing/Footer';
-import { BackgroundPattern } from '@/components/background-pattern';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Start a Campaign",
+  description: "Launch your project with milestone-based crowdfunding. Build trust with your contributors and deliver results.",
+};
 
 export default function CreateLayout({
   children,

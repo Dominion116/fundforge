@@ -1,5 +1,11 @@
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/landing/Footer';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Your Dashboard",
+  description: "Manage your campaigns and track your contributions on FundForge.",
+};
 
 export default function DashboardLayout({
   children,

@@ -1,5 +1,11 @@
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/landing/Footer';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Campaign Details",
+  description: "View campaign details, track milestones, and back the project on FundForge.",
+};
 
 export default function CampaignLayout({
   children,

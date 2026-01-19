@@ -15,8 +15,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FundForge | Decentralized Crowdfunding",
-  description: "Secure, milestone-based crowdfunding platform powered by blockchain technology.",
+  title: {
+    default: "FundForge | Decentralized Crowdfunding",
+    template: "%s | FundForge",
+  },
+  description: "Secure, milestone-based crowdfunding platform powered by blockchain technology. Fund projects with confidence.",
+  keywords: ["crowdfunding", "blockchain", "web3", "milestone funding", "decentralized finance", "Base network"],
+  authors: [{ name: "FundForge Team" }],
+  openGraph: {
+    title: "FundForge | Decentralized Crowdfunding",
+    description: "Secure, milestone-based crowdfunding platform powered by blockchain technology.",
+    url: "https://fundforge.app",
+    siteName: "FundForge",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

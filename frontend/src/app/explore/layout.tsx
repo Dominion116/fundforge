@@ -1,6 +1,12 @@
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/landing/Footer';
 import { BackgroundPattern } from '@/components/background-pattern';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Explore Campaigns",
+  description: "Discover and fund groundbreaking projects built by the community. Back projects with confidence using milestone-based funding.",
+};
 
 export default function ExploreLayout({
   children,

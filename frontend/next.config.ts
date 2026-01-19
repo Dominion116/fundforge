@@ -10,9 +10,13 @@ const nextConfig = {
     "@coinbase/cdp-sdk",
     "@base-org/account"
   ],
-  // Ignore linting and type checking for faster builds/deployment if needed
-  eslint: {
-    ignoreDuringBuilds: true,
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      "@solana/kit": false,
+      "@solana-program/system": false
+    };
+    return config;
   },
   typescript: {
     ignoreBuildErrors: true, 

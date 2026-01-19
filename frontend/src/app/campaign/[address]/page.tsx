@@ -6,6 +6,7 @@ import { useContribute } from '@/hooks/useContribute';
 import { useVote } from '@/hooks/useVote';
 import { useSubmitMilestone } from '@/hooks/useSubmitMilestone';
 import { useWithdraw } from '@/hooks/useWithdraw';
+import { useFinalizeMilestone } from '@/hooks/useFinalizeMilestone';
 import { Address, formatEther, parseEther } from 'viem';
 import { useAccount } from 'wagmi';
 import { Button } from '@/components/ui/button';
@@ -15,7 +16,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { Loader2, Target, Calendar, User, Shield, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { Loader2, Target, Calendar, User, Shield, CheckCircle2, ArrowUpRight, Lock } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
@@ -30,6 +31,7 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
   const { vote, isPending: isVoting } = useVote(campaignAddress);
   const { submitMilestone, isPending: isSubmittingMilestone } = useSubmitMilestone(campaignAddress);
   const { withdraw, isPending: isWithdrawing } = useWithdraw(campaignAddress);
+  const { finalizeMilestone, isPending: isFinalizing } = useFinalizeMilestone(campaignAddress);
   
   const [contributionAmount, setContributionAmount] = useState('');
 
@@ -124,8 +126,15 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-4">
                   <Button 
-                    onClick={() => submitMilestone()} 
-                    disabled={isSubmittingMilestone || campaign.state !== 0}
+                    onClick={() => {
+                      const nextMilestoneIndex = milestones.findIndex(m => m.state === 0);
+                      if (nextMilestoneIndex !== -1) {
+                        submitMilestone(nextMilestoneIndex);
+                      } else {
+                        toast.error('No pending milestones to submit');
+                      }
+                    }} 
+                    disabled={isSubmittingMilestone || campaign.state !== 0 || !milestones.some(m => m.state === 0)}
                     className="rounded-none"
                   >
                     {isSubmittingMilestone ? <Loader2 className="mr-2 size-4 animate-spin" /> : <CheckCircle2 className="mr-2 size-4" />}
@@ -238,6 +247,19 @@ export default function CampaignDetailsPage({ params }: { params: Promise<{ addr
                             Reject
                           </Button>
                         </div>
+
+                        <Separator className="bg-primary/10" />
+
+                        <Button 
+                          size="sm" 
+                          variant="secondary"
+                          onClick={() => finalizeMilestone(index)}
+                          disabled={isFinalizing}
+                          className="w-full rounded-none"
+                        >
+                          {isFinalizing ? <Loader2 className="mr-2 size-4 animate-spin" /> : <Lock className="mr-2 size-4" />}
+                          Finalize Vote
+                        </Button>
                       </div>
                     </CardContent>
                   )}

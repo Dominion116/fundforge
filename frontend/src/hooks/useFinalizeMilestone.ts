@@ -4,7 +4,7 @@ import { Address } from 'viem';
 import { toast } from 'sonner';
 import { useEffect } from 'react';
 
-export function useSubmitMilestone(campaignAddress: Address) {
+export function useFinalizeMilestone(campaignAddress: Address) {
   const { data: hash, isPending, writeContract, error: writeError } = useWriteContract();
 
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({
@@ -14,7 +14,7 @@ export function useSubmitMilestone(campaignAddress: Address) {
   useEffect(() => {
     if (hash) {
       toast.success('Transaction Sent!', {
-        description: 'Starting milestone voting...',
+        description: 'Finalizing milestone voting...',
         action: {
           label: 'View on Explorer',
           onClick: () => window.open(`https://sepolia.basescan.org/tx/${hash}`, '_blank'),
@@ -25,8 +25,8 @@ export function useSubmitMilestone(campaignAddress: Address) {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success('Voting Started!', {
-        description: 'Contributors can now vote on this milestone.',
+      toast.success('Voting Finalized!', {
+        description: 'The milestone state has been updated based on the votes.',
       });
     }
   }, [isSuccess]);
@@ -40,23 +40,22 @@ export function useSubmitMilestone(campaignAddress: Address) {
     }
   }, [writeError]);
 
-  const submitMilestone = async (milestoneId: number, durationDays: number = 3) => {
+  const finalizeMilestone = async (milestoneId: number) => {
     try {
-      const durationSeconds = BigInt(durationDays * 24 * 60 * 60);
       writeContract({
         address: campaignAddress,
         abi: MilestoneCampaignABI,
-        functionName: 'startMilestoneVoting',
-        args: [BigInt(milestoneId), durationSeconds],
+        functionName: 'finalizeMilestoneVoting',
+        args: [BigInt(milestoneId)],
       });
     } catch (error) {
-      console.error('Submission error:', error);
+      console.error('Finalization error:', error);
       toast.error('Failed to initiate transaction');
     }
   };
 
   return {
-    submitMilestone,
+    finalizeMilestone,
     isPending,
     isConfirming,
     isSuccess,

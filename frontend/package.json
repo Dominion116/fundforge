@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@coinbase/wallet-sdk": "^4.3.7",
+    "@gemini-wallet/core": "^0.3.2",
+    "@metamask/sdk": "^0.33.1",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-label": "^2.1.8",
@@ -21,7 +24,8 @@
     "@radix-ui/react-switch": "^1.2.6",
     "@reown/appkit": "^1.8.16",
     "@reown/appkit-adapter-wagmi": "^1.8.16",
-    "@tanstack/react-query": "^5.90.17",
+    "@tanstack/react-query": "^5.90.19",
+    "@walletconnect/ethereum-provider": "^2.23.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -29,22 +33,36 @@
     "lucide-react": "^0.562.0",
     "next": "16.1.2",
     "next-themes": "^0.4.6",
+    "porto": "^0.2.37",
     "react": "19.2.3",
     "react-day-picker": "^9.13.0",
     "react-dom": "19.2.3",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
-    "viem": "^2.44.2",
-    "wagmi": "^3.3.2"
+    "viem": "^2.44.4",
+    "wagmi": "^3.3.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/webpack": "^5.28.5",
+    "assert": "^2.1.0",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.2",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "url": "^0.11.4",
+    "webpack": "^5.104.1"
   }
 }

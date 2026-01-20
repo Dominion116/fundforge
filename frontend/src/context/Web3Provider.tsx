@@ -27,7 +27,7 @@ export const wagmiAdapter = new WagmiAdapter({
 // 4. Initialize AppKit
 createAppKit({
   adapters: [wagmiAdapter],
-  networks,
+  networks: networks as [typeof networks[number], ...typeof networks[number][]],
   projectId,
   metadata: {
     name: 'FundForge',

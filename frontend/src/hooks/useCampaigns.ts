@@ -14,6 +14,16 @@ export interface CampaignData {
   state: number; // enum
 }
 
+interface CampaignInfo {
+  creator: Address;
+  title: string;
+  description: string;
+  goal: bigint;
+  deadline: bigint;
+  totalContributed: bigint;
+  state: number;
+}
+
 export function useCampaigns() {
   // 1. Fetch all campaign addresses from the Factory
   const { data: campaignAddresses, isLoading: isLoadingAddresses } = useReadContract({
@@ -43,7 +53,7 @@ export function useCampaigns() {
   const campaigns: CampaignData[] = campaignsData
     ? campaignsData.map((result, index) => {
         if (result.status === 'success' && campaignAddresses) {
-          const info = result.result;
+          const info = result.result as CampaignInfo;
           return {
             address: campaignAddresses[index],
             creator: info.creator,
